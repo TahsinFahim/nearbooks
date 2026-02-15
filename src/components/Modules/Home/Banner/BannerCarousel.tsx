@@ -35,7 +35,7 @@ export default function BannerCarousel({ banners }: Props) {
   const loopedBanners = [...banners, ...banners]
 
   return (
-    <section className="w-full p-5 relative">
+    <section className="w-full px-5 pt-5  relative">
       <Carousel
         opts={{ loop: true, align: "start", skipSnaps: false }}
         setApi={setApi}
@@ -55,7 +55,7 @@ export default function BannerCarousel({ banners }: Props) {
             >
               <div className="relative h-[250px] rounded-xl overflow-hidden group">
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}${banner.image_path}`}
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${banner.image_path}`}
                   alt={banner.title}
                   fill
                   priority
@@ -89,7 +89,7 @@ export default function BannerCarousel({ banners }: Props) {
       </Carousel>
 
       {/* DOTS */}
-      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 flex gap-3">
+      <div className="absolute pb-3 -bottom-1 left-1/2 -translate-x-1/2 flex gap-3">
         {banners.map((_, index) => (
           <button
             key={index}

@@ -15,6 +15,12 @@ const nextConfig = {
         port: '8000',
         pathname: '/storage/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'admin.corporatesolutionsbd.com',
+        port: '',
+        pathname: '/storage/**',
+      },
     ],
 
     // Dev mode এ unoptimized

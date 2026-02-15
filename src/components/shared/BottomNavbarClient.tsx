@@ -61,7 +61,7 @@ const BottomNavbarClient = ({ categories }: BottomNavbarClientProps) => {
 
         {/* SUB CATEGORIES GRID */}
         <div className="mb-6">
-          <div className="grid grid-cols-4 gap-4">
+          <div className="flex gap-1">
             {activeSubCategories.map((subCategory) => (
               <Link
                 key={subCategory.id}
@@ -95,33 +95,7 @@ const BottomNavbarClient = ({ categories }: BottomNavbarClientProps) => {
           </div>
         </div>
 
-        {/* FOOTER */}
-        {activeSubCategories.length > 0 && (
-          <div className="flex items-center justify-between pt-6 border-t border-gray-200">
-            <div>
-              <p className="text-sm text-gray-600">
-                Can't find what you're looking for?
-              </p>
-              <p className="text-xs text-gray-400 mt-1">
-                Showing {activeSubCategories.length} of {subCategories.length} subcategories
-              </p>
-            </div>
-            <Link
-              href={`/category/${category.slug.replace("/", "")}`}
-              className="
-                inline-flex items-center gap-2
-                px-5 py-2.5 rounded-lg
-                bg-blue-950 text-white font-medium
-                hover:bg-blue-900
-                transition-colors duration-200
-                focus:outline-none focus:ring-2 focus:ring-blue-950 focus:ring-offset-2
-              "
-            >
-              View All {category.name}
-              <ChevronRight className="w-4 h-4" />
-            </Link>
-          </div>
-        )}
+     
       </div>
     );
   };
