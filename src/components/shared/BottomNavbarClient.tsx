@@ -33,36 +33,12 @@ const BottomNavbarClient = ({ categories }: BottomNavbarClientProps) => {
   const renderSubCategoryGrid = (category: Category) => {
     if (!category.sub_categories || category.sub_categories.length === 0) return null;
     
-    const subCategories = category.sub_categories;
-    const activeSubCategories = subCategories.filter(sub => sub.is_active === 1);
-    
-    if (activeSubCategories.length === 0) return null;
-    
     return (
       <div className="w-[70vw] p-6 max-h-[70vh] overflow-y-auto">
-        {/* MODAL HEADER */}
-        {/* <div className="mb-6 pb-4 border-b border-gray-200">
-          <div className="flex items-start justify-between">
-            <div>
-              <h2 className="text-2xl font-bold text-blue-950">
-                {category.name}
-              </h2>
-              {category.description && (
-                <p className="text-gray-600 mt-1 max-w-2xl">
-                  {category.description}
-                </p>
-              )}
-              <p className="text-sm text-gray-500 mt-2">
-                Browse {activeSubCategories.length} active subcategories
-              </p>
-            </div>
-          </div>
-        </div> */}
-
         {/* SUB CATEGORIES GRID */}
         <div className="mb-6">
           <div className="flex gap-1">
-            {activeSubCategories.map((subCategory) => (
+            {category.sub_categories.map((subCategory) => (
               <Link
                 key={subCategory.id}
                 href={getSubCategoryUrl(category, subCategory)}
@@ -74,34 +50,19 @@ const BottomNavbarClient = ({ categories }: BottomNavbarClientProps) => {
                   min-h-[100px]
                 "
               >
-                <div className="flex items-center ">
+                <div className="flex items-center">
                   <span className="font-semibold text-gray-900 group-hover/subcategory:text-blue-950 truncate text-base">
                     {subCategory.name}
                   </span>
                   <ChevronRight className="w-4 h-4 text-gray-400 group-hover/subcategory:text-blue-600 flex-shrink-0" />
                 </div>
-                {/* {subCategory.description && (
-                  <p className="text-sm text-gray-500 line-clamp-2">
-                    {subCategory.description}
-                  </p>
-                )} */}
-                {subCategory.is_active === 0 && (
-                  <span className="text-xs text-gray-400 italic">
-                    (Inactive)
-                  </span>
-                )}
               </Link>
             ))}
           </div>
         </div>
-
-     
       </div>
     );
   };
-
-  // Filter active categories
-  const activeCategories = categories.filter(category => category.is_active === 1);
 
   return (
     <div className="w-full bg-white border-b border-gray-200 shadow-sm relative">
@@ -110,7 +71,7 @@ const BottomNavbarClient = ({ categories }: BottomNavbarClientProps) => {
           className="flex items-center justify-center relative"
           aria-label="Main navigation"
         >
-          {activeCategories.map((category) => (
+          {categories.map((category) => (
             <HoverCard key={category.id} openDelay={100} closeDelay={200}>
               <HoverCardTrigger asChild>
                 <div className="relative">

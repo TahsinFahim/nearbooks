@@ -17,8 +17,8 @@ export interface Publisher {
 
 export interface Author {
   id: number;
-  name: string;
-  slug: string;
+  name: string | null;
+  slug: string | null;
   email: string | null;
   phone: string | null;
   nationality: string | null;

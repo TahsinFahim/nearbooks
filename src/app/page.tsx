@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="  bg-gray-50 items-center justify-center font-sans dark:bg-black">
       < BannerPage />
-      <div className="container mx-auto ">
+      <div className="container max-w-6xl mx-auto ">
         <Products categoryId={1} title="University Books" />
         <Products categoryId={9} title="University Projects" />
         <Products categoryId={5} title="Islamic Books" />  

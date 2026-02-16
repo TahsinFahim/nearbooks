@@ -50,7 +50,8 @@ export default async function BlogPostPage({ params }: {
 
                         <div className="flex flex-wrap gap-4 text-sm">
                             <span className="text-gray-600 flex items-center gap-1">
-                                <span className="font-semibold text-blue-950">Author:</span> {book?.author.name}
+                                <span className="font-semibold text-blue-950">Author:</span> {book?.author?.name || "Unknown"}
+
                             </span>
                             <span className="text-gray-600 flex items-center gap-1">
                                 <span className="font-semibold text-blue-950">Publisher:</span> {book?.publisher?.name || "Unknown"}

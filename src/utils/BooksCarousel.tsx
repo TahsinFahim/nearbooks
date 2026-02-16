@@ -77,14 +77,14 @@ export const BooksCarousel: React.FC<BooksCarouselProps> = ({ books }) => {
                     )}
 
                     {/* Book Cover */}
-                    <div className="relative h-72 p-4 bg-gradient-to-br from-gray-50 to-gray-100">
+                    <div className="relative h-64 p-4 bg-gradient-to-br from-gray-50 to-gray-100">
                       <div className="relative w-full h-full overflow-hidden rounded-xl shadow-inner">
                         <Image
                           src={`${process.env.NEXT_PUBLIC_IMAGE_URL}${book.cover_image}`}
                           alt={book.title || "Book Cover"}
                           fill
-                          className="rounded-lg transition-all duration-500 group-hover:scale-105 object-cover group-hover:brightness-105"
-                          sizes="(max-width: 640px) 45vw, (max-width: 768px) 30vw, (max-width: 1024px) 23vw, 18vw"
+                          className="rounded-lg transition-all duration-500 group-hover:scale-105 object-contain group-hover:brightness-105"
+                          
                           priority={index < 6}
                         />
                       </div>
