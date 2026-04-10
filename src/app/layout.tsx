@@ -24,8 +24,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></link>
       <body className={`${inter.className} antialiased `}>
-        <TopNavbar></TopNavbar>
+        <div className="hidden lg:block">
+            <TopNavbar></TopNavbar>
+        </div>
+        
         <Navbar/>
         <BottomNavbar/>
         {children}

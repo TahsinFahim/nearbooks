@@ -10,7 +10,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Pencil, Tag } from "lucide-react";
+import { Download, Pencil, Tag } from "lucide-react";
 import { Book } from "@/types/book";
 import Autoplay from "embla-carousel-autoplay";
 
@@ -93,7 +93,7 @@ export const BooksCarousel: React.FC<BooksCarouselProps> = ({ books }) => {
                     {/* Book Info */}
                     <div className="p-2 flex flex-col flex-grow border-t border-gray-100 bg-white">
                       <Link
-                        href={`/${slugify(book.title)}/${book.id}`}
+                        href={`/${slugify(book.slug)}/${book.id}`}
                         className="flex flex-col flex-grow group/link"
                       >
                         <div className="mb-1">
@@ -127,7 +127,7 @@ export const BooksCarousel: React.FC<BooksCarouselProps> = ({ books }) => {
                               ৳{discountedPrice.toLocaleString()}
                             </span>
                           </div>
-                          {book.pdf_price && ( <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-blue-50 to-blue-100/50 rounded-xl border border-blue-200/50"> <div className="flex items-center gap-2"> <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center"> <div className="w-5 h-5 rounded-sm bg-gradient-to-br from-blue-600 to-blue-800"></div> </div> <div className="flex flex-col"> <span className="text-xs font-semibold text-blue-900">Digital Edition</span> <span className="text-xs text-gray-600">Instant Download</span> </div> </div> <span className="text-lg font-bold text-gray-900"> ৳{Number(book.pdf_price).toLocaleString()} </span> </div> )}
+                          {book.pdf_price && ( <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-blue-50 to-blue-100/50 rounded-xl border border-blue-200/50"> <div className="flex items-center gap-2"> <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center">< Download className="bg-blue-600 text-white p-1 routnde-xl" />  </div> <div className="flex flex-col"> <span className="text-xs font-semibold text-blue-900">Digital Edition</span> <span className="text-xs text-gray-600">Instant Download</span> </div> </div> <span className="text-lg font-bold text-gray-900"> ৳{Number(book.pdf_price).toLocaleString()} </span> </div> )}
                         </div>
                       </Link>
                     </div>

@@ -37,7 +37,7 @@ const Header = ({
                     </div>
 
                     {/* Right Section */}
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                    <div className="flex   items-start  gap-4">
                         {/* Rating with enhanced design */}
                         {showRating && (
                             <div className="flex items-center gap-3 px-4 py-1 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-100">
