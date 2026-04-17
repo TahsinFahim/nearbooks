@@ -85,6 +85,7 @@ const Searchbar = () => {
 
     // ── Navigate ──
     const goToBook = useCallback((book: Book) => {
+        inputRef.current?.blur();
         setShowDropdown(false);
         setQuery(book.title);
         router.push(`/${book.slug}/${book.id}`);
