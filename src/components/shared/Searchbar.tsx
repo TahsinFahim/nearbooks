@@ -160,7 +160,7 @@ const Searchbar = () => {
                     ) : query ? (
                         <X
                             className="w-4 h-4 text-gray-400 cursor-pointer hover:text-red-400"
-                            onClick={handleClear}
+                            onClick={() => handleClear()}
                         />
                     ) : null}
                 </div>
