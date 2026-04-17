@@ -33,7 +33,7 @@ const Navbar = () => {
                         <div className="flex-shrink-0">
                             <Link href="/">
                                 <Image
-                                    src="/logo/nearbook-logo1.png"
+                                    src="/assets/logo/nearbook-logo1.png"
                                     alt="NearBook Logo"
                                     width={190}
                                     height={70}
