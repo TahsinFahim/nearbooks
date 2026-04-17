@@ -19,7 +19,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'admin.corporatesolutionsbd.com',
         port: '',
-        pathname: '/storage/**',
+        pathname: '/public/storage/**',
       },
     ],
 
