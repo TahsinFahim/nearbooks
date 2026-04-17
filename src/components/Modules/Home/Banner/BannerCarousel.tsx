@@ -36,11 +36,11 @@ export default function BannerCarousel({ banners }: Props) {
   const loopedBanners = [...banners, ...banners]
 
   return (
-    <section className="w-full px-4 pt-5 relative overflow-hidden">
+    <section className="w-full px-4 pt-3 relative overflow-hidden">
       <Carousel
         opts={{
           loop: true,
-          align: "start",
+          align: "center",
           skipSnaps: false,
         }}
         setApi={setApi}
@@ -58,13 +58,13 @@ export default function BannerCarousel({ banners }: Props) {
               key={index}
               className="pl-3 basis-[88%] sm:basis-1/2 lg:basis-1/3"
             >
-              <div className="relative h-[250px] rounded-2xl overflow-hidden shadow-lg group">
+              <div className="relative h-52 md:h-52 lg:h-64 xl:h-64 rounded-2xl overflow-hidden shadow-lg group">
                 <Image
                   src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${banner.image_path}`}
                   alt={banner.title}
                   fill
                   priority
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover sm:object-cover group-hover:scale-105 transition-transform duration-500"
                 />
 
                 {/* Overlay */}
@@ -100,11 +100,10 @@ export default function BannerCarousel({ banners }: Props) {
             key={index}
             onClick={() => api?.scrollTo(index)}
             aria-label={`Go to slide ${index + 1}`}
-            className={`rounded-full transition-all duration-300 ${
-              current % banners.length === index
+            className={`rounded-full transition-all duration-300 ${current % banners.length === index
                 ? "bg-red-600 w-3 h-3"
                 : "bg-gray-300 w-3 h-3 hover:bg-gray-500"
-            }`}
+              }`}
           />
         ))}
       </div>
