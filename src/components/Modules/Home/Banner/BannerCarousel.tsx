@@ -26,18 +26,23 @@ export default function BannerCarousel({ banners }: Props) {
     if (!api) return
 
     setCurrent(api.selectedScrollSnap())
+
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap())
     })
   }, [api])
 
-  // Duplicate banners for smooth infinite loop if slides are few
+  // duplicate for smoother loop
   const loopedBanners = [...banners, ...banners]
 
   return (
-    <section className="w-full px-5 pt-5  relative">
+    <section className="w-full px-4 pt-5 relative overflow-hidden">
       <Carousel
-        opts={{ loop: true, align: "start", skipSnaps: false }}
+        opts={{
+          loop: true,
+          align: "start",
+          skipSnaps: false,
+        }}
         setApi={setApi}
         plugins={[
           Autoplay({
@@ -47,26 +52,26 @@ export default function BannerCarousel({ banners }: Props) {
           }),
         ]}
       >
-        <CarouselContent className="-ml-4">
+        <CarouselContent className="-ml-3 overflow-visible">
           {loopedBanners.map((banner, index) => (
             <CarouselItem
               key={index}
-              className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3"
+              className="pl-3 basis-[88%] sm:basis-1/2 lg:basis-1/3"
             >
-              <div className="relative h-[250px] rounded-xl overflow-hidden group">
+              <div className="relative h-[250px] rounded-2xl overflow-hidden shadow-lg group">
                 <Image
                   src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${banner.image_path}`}
                   alt={banner.title}
                   fill
                   priority
-                  className=" group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
 
-                {/* <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/800 to-transparent" /> */}
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-black/20" />
 
-                <div className="absolute bottom-5 left-5 text-white">
-                  
-
+                {/* Content */}
+                <div className="absolute bottom-5 left-5 z-10 text-white">
                   {banner.link && (
                     <Button
                       size="sm"
@@ -88,8 +93,8 @@ export default function BannerCarousel({ banners }: Props) {
         </CarouselContent>
       </Carousel>
 
-      {/* DOTS */}
-      <div className="absolute pb-3 -bottom-1 left-1/2 -translate-x-1/2 flex gap-3">
+      {/* Dots */}
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2 z-20">
         {banners.map((_, index) => (
           <button
             key={index}
@@ -98,7 +103,7 @@ export default function BannerCarousel({ banners }: Props) {
             className={`rounded-full transition-all duration-300 ${
               current % banners.length === index
                 ? "bg-red-600 w-3 h-3"
-                : "bg-gray-400 w-3 h-3 hover:bg-gray-600"
+                : "bg-gray-300 w-3 h-3 hover:bg-gray-500"
             }`}
           />
         ))}
