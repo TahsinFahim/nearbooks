@@ -85,11 +85,11 @@ const Searchbar = () => {
 
     // ── Navigate ──
     const goToBook = useCallback((book: Book) => {
-        inputRef.current?.blur();
-        setShowDropdown(false);
-        setQuery(book.title);
+        inputRef.current?.blur(); // close keyboard
+
+        handleClear(false); // focus করবে না
+
         router.push(`/${book.slug}/${book.id}`);
-        handleClear();
     }, [router]);
 
     // ── Keyboard nav ──
@@ -125,12 +125,15 @@ const Searchbar = () => {
     };
 
     // ── Clear ──
-    const handleClear = () => {
+    const handleClear = (focus = true) => {
         setQuery("");
         setBooks([]);
         setShowDropdown(false);
         setActiveIndex(-1);
-        inputRef.current?.focus();
+
+        if (focus) {
+            inputRef.current?.focus();
+        }
     };
 
     return (
@@ -176,9 +179,8 @@ const Searchbar = () => {
                             key={book.id}
                             onClick={() => goToBook(book)}
                             onMouseEnter={() => setActiveIndex(index)}
-                            className={`flex items-center gap-3 px-4 py-2.5 cursor-pointer ${
-                                activeIndex === index ? "bg-blue-50" : "hover:bg-blue-50"
-                            }`}
+                            className={`flex items-center gap-3 px-4 py-2.5 cursor-pointer ${activeIndex === index ? "bg-blue-50" : "hover:bg-blue-50"
+                                }`}
                         >
                             <Search className="w-3.5 h-3.5 text-blue-500" />
                             <div>
